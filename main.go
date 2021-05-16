@@ -100,7 +100,7 @@ func NewNode(config *Config, log *zerolog.Logger) (*node, error) {
 
 	raftConfig := raft.DefaultConfig()
 	raftConfig.LocalID = raft.ServerID(config.RaftAddress.String())
-	raftConfig.Logger = stdlog.New(log, "", 0)
+	stdlog.New(log, "", 0)
 	transportLogger := log.With().Str("component", "raft-transport").Logger()
 	transport, err := raftTransport(config.RaftAddress, transportLogger)
 	if err != nil {
